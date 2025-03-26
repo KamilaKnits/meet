@@ -2,20 +2,20 @@
 
 Meet Meet! A serverless, progressive web application built with React where users can search for upcoming events in a particular city. 
 
-## Feature 1: Filter Events by city
+## Feature 1: Filter Events by City
 As a user, I should be able to filter events by city so that I can see a list of events taking place in that city.
 
 ### Scenario 1: When a user hasn't searched for a specific city, show upcoming events from all cities.
 
-  * Given user hasn't serached for any city;
+  * Given user hasn't searched for any city;
   * When the user opens the app;
-  * Then the user should see a list of upcomin events.
+  * Then the user should see a list of upcoming events.
 
 ### Scenario 2: User should see a list of suggestions when they search for a city.
 
   * Given the main page is open;
   * When user starts typing in the city textbox;
-  * Then the user should receive a list of cities (suggestions) that match waht they've typed.
+  * Then the user should receive a list of cities (suggestions) that match what they've typed.
 
 ### Scenario 3: User can select a city from the suggested list.
 
@@ -24,10 +24,10 @@ As a user, I should be able to filter events by city so that I can see a list of
   * Then their city should be changed to that city (i.e., "New York, NY") AND the user should receive a list of upcoming events in that city.
 
 
-## Feature 2: Specify Number of Events
+## Feature 2: Show/Hide Event Details
 As a user, I should be able to keep event details hidden or visible until I choose to change them, so that I don’t have to toggle them repeatedly when navigating the app.
 
-### Scenario 1: An event element is collpsed by default.
+### Scenario 1: An event element is collapsed by default.
 
   * Given the user is on the events page;
   * When the events are displayed;
@@ -49,11 +49,11 @@ As a user, I should be able to keep event details hidden or visible until I choo
 ## Feature 3: Specify Number of Events
 As a user, I should be able to specify the number of events displayed at a time, so that I can control how much information I see on my screen.
 
-### Scenario 1: When user hasn't specified a number, 32 events are shown by defaults.
+### Scenario 1: When user hasn't specified a number, 32 events are shown by default.
 
   * Given the user is on the events app;
   * When the user doesn't specify a number of events;
-  * Then 32 events should be displayed by defaults.
+  * Then 32 events should be displayed by default.
 
 ### Scenario 2: User can change the number of events displayed.
 
@@ -69,13 +69,13 @@ As a user, I should be able to access event details that were recently viewed, s
 
   * Given the user is on the events page and the user has no internet connection;
   * When the page is loaded;
-  * Then the app should display cached event data and the user shoudl be notified they're offline.
+  * Then the app should display cached event data and the user should be notified they're offline.
 
 ### Scenario 2: Show error when user changes search settings ( city, number of events).
 
   * Given the user is offline;
   * When the user changes the search settings (city or number of events);
-  * Then the app should display an error message indication that the settings cannot be updated while offline.
+  * Then the app should display an error message indicating that the settings cannot be updated while offline.
 
 
 ## Feature 5: Add an App Shortcut to the Home Screen
@@ -85,7 +85,7 @@ As a user, I should be able to add an app shortcut to my home screen, so that I 
 
   * Given the user is on the app's homepage;
   * When the user selects the option to add a shortcut to the home screen;
-  * Then the app shortcut should be added to the device's home screen and the user can launch the directly from the home scree.
+  * Then the app shortcut should be added to the device's home screen and the user can launch the app directly from the home screen.
 
 
 ## Feature 6: Display Charts Visualizing Event Details
