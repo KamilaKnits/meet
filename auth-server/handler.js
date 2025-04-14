@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 
 
 const { google } = require("googleapis");
@@ -43,7 +43,7 @@ module.exports.getAuthURL = async () => {
 
 module.exports.getAccessToken = async (e) => {
     //Decode authorization code extracted from the URL query
-    const code = decodeURIComponent(`${e.pathParamaters.code}`);
+    const code = decodeURIComponent(`${e.pathParameters.code}`);
 
     return new Promise((resolve, reject) => {
         /**
@@ -84,7 +84,7 @@ module.exports.getAccessToken = async (e) => {
 
 module.exports.getCalendarEvents = async (e) => {
     //Decode authorization code extracted from the URL query
-    const access_token = decodeURIComponent(`${e.pathParamaters.access_token}`);
+    const access_token = decodeURIComponent(`${e.pathParameters.access_token}`);
     oAuth2Client.setCredentials({ access_token });
 
     return new Promise((resolve, reject) => {
