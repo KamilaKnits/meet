@@ -27,7 +27,7 @@ describe('<Event /> component', () => {
     });
 
     test('renders event details button with the title (show details)', () => {
-        expect(EventComponent.getAllByText("showdetails")).toBeInTheDocument();
+        expect(EventComponent.getAllByText("show details")).toBeInTheDocument();
     });
 
     test('by default, event details section should be hidden', () => {
