@@ -27,7 +27,7 @@ test('by default, value of the input field is 32', () => {
 //a test to ensure that the value of NumberOfEvents component's textbox has a value
 //that changes accordingly when a user .type()'s in it
 
-test('textbox value changes accordingly when user types in it', () => {
+test('textbox value changes accordingly when user types in it', async () => {
     const input = NumberOfEventsComponent.queryByRole("textbox")
     const user = userEvent.setup();
     await user.type(input,`{backspace}{backspace}10`);

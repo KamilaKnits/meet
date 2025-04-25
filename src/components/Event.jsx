@@ -1,24 +1,54 @@
 // src/components/Event.jsx
 import { useState } from 'react';
+// import PropTypes from 'prop-types';
 
 const Event = ({ event }) => {
     const [showDetails, setShowDetails] = useState(false);
     return (
         <li key={event.id} className="event">
-            <h3 id="summary">{summary}</h3>
-            <p id="created">{new Date(event.created).toUTCString}</p>
-            <p id="location">{location}</p>
-            <button
-                className="show details"
-                onClick={() => {
-                    showDetails ? setShowDetails(false) : setShowDetails(true)
-                }}
+            <h3 id="summary">{event.summary}</h3>
+            <p id="created">{new Date(event.created).toUTCString()}</p>
+            <p id="location">{event.location}</p>
 
-            >{showDetails ? "hide details" : "show details"}
+            <button
+                className="show-details"
+                onClick={() => setShowDetails((prev) => !prev)}
+            >
+                {showDetails ? "hide-details" : "show-details"}
             </button>
+
+            {showDetails && (
+                <div className="details">
+                    <p>{event.description}</p>
+                    <p>Start: {new Date(event.start.dateTime).toUTCString()}</p>
+                    <p>End: {new Date(event.end.dateTime).toUTCString()}</p>
+
+                </div>
+            )}
         </li>
 
     );
-}
+};
+
+// Event.propTypes = {
+//     event: PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       summary: PropTypes.string.isRequired,
+//       location: PropTypes.string.isRequired,
+//       description: PropTypes.string,
+//       created: PropTypes.string.isRequired,
+//       start: PropTypes.shape({
+//         dateTime: PropTypes.string.isRequired,
+//       }).isRequired,
+//       end: PropTypes.shape({
+//         dateTime: PropTypes.string.isRequired,
+//       }).isRequired,
+//     }).isRequired,
+//   };
+
+
+
+
+
 
 export default Event;
