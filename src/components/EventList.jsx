@@ -1,5 +1,5 @@
 // src/components/EventList.jsx
-// import React from 'react';
+import React from 'react';
 import Event from "./Event";
 // import PropTypes from 'prop-types';
 

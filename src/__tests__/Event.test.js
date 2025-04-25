@@ -1,5 +1,5 @@
 //src/__test__/Event.test.js
-// import React from 'react';
+import React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import Event from "../components/Event";
@@ -10,7 +10,7 @@ describe('<Event /> component', () => {
     let allEvents;
 
     beforeEach( async () => {
-        const allEvents = await getEvents();
+        allEvents = await getEvents();
         EventComponent = render(<Event event={allEvents[0]}/>);
     });
 

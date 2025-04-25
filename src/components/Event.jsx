@@ -1,5 +1,5 @@
 // src/components/Event.jsx
-import { useState } from 'react';
+import React, { useState } from 'react';
 // import PropTypes from 'prop-types';
 
 const Event = ({ event }) => {
