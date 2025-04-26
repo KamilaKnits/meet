@@ -10,13 +10,6 @@ const Event = ({ event }) => {
             <p id="created">{new Date(event.created).toUTCString()}</p>
             <p id="location">{event.location}</p>
 
-            <button
-                className="show-details"
-                onClick={() => setShowDetails((prev) => !prev)}
-            >
-                {showDetails ? "hide-details" : "show-details"}
-            </button>
-
             {showDetails && (
                 <div className="details">
                     <p>{event.description}</p>
@@ -25,10 +18,17 @@ const Event = ({ event }) => {
 
                 </div>
             )}
+            <button
+                className="show-details"
+                onClick={() => setShowDetails((prev) => !prev)}
+            >
+                {showDetails ? "hide-details" : "show-details"}
+            </button>
         </li>
-
     );
 };
+
+export default Event;
 
 // Event.propTypes = {
 //     event: PropTypes.shape({
@@ -45,10 +45,3 @@ const Event = ({ event }) => {
 //       }).isRequired,
 //     }).isRequired,
 //   };
-
-
-
-
-
-
-export default Event;

@@ -7,7 +7,8 @@ const NumberOfEvents = () => {
         <div id="number-of-events">
             <label>
                 Number of Events:
-                <input type="text" />
+                <input type="text"
+                defaultValue={32} />
             </label>
         </div>
     )
