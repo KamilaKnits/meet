@@ -19,7 +19,8 @@ describe('<Event /> component', () => {
     });
 
     test('renders event start time', () => {
-        expect(EventComponent.queryByText(allEvents[0].created)).toBeInTheDocument();
+        const startTimeElement = EventComponent.container.querySelector('#created');
+        expect(startTimeElement.textContent).toContain(allEvents[0].created);
     });
 
     test('renders event location', () => {
@@ -53,7 +54,7 @@ describe('<Event /> component', () => {
 
         await user.click(EventComponent.queryByText("hide-details"));
 
-        expect(EventComponent.container.querySelector(".details")).toBeInTheDocument();
+        expect(EventComponent.container.querySelector(".details")).not.toBeInTheDocument();
         expect(EventComponent.queryByText("hide-details")).not.toBeInTheDocument();
         expect(EventComponent.queryByText("show-details")).toBeInTheDocument();
 

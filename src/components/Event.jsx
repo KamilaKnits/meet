@@ -7,14 +7,14 @@ const Event = ({ event }) => {
     return (
         <li key={event.id} className="event">
             <h3 id="summary">{event.summary}</h3>
-            <p id="created">{new Date(event.created).toUTCString()}</p>
+            <p id="created">{event.created}</p>
             <p id="location">{event.location}</p>
 
             {showDetails && (
                 <div className="details">
                     <p>{event.description}</p>
-                    <p>Start: {new Date(event.start.dateTime).toUTCString()}</p>
-                    <p>End: {new Date(event.end.dateTime).toUTCString()}</p>
+                    <p>Start: {event.start.dateTime}</p>
+                    <p>End: {event.end.dateTime}</p>
 
                 </div>
             )}
