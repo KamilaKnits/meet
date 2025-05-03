@@ -45,6 +45,7 @@ describe('<App /> integration', () => {
     const berlinEvents = allEvents.filter(e => e.location === 'Berlin, Germany');
 
     expect(allRenderedEventItems.length).toBe(berlinEvents.length);
+    
     allRenderedEventItems.forEach(e => {
       expect(e.textContent).toContain("Berlin, Germany");
     });

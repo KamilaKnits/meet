@@ -3,7 +3,7 @@ import React from 'react';
 import { render, within, waitFor } from '@testing-library/react';
 import { getEvents } from '../api';
 import EventList from '../components/EventList';
-import App from "../App";
+import App from './../App';
 
 
 describe('<EventList /> component', () => {
@@ -24,7 +24,7 @@ describe('<EventList /> component', () => {
 });
 
 describe('EventList /> integration', () => {
-    test('renders a list fo 32 events when the app is mounted and rendered', 
+    test('renders a list of 32 events when the app is mounted and rendered', 
         async () => {
         const AppComponent = render(<App />);
         const AppDOM = AppComponent.container.firstChild;

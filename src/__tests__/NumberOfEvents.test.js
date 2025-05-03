@@ -14,14 +14,17 @@ describe('<NumberOfEvents /> component', () => {
 //of a textbox
 
 test('has an element with "textbox" role', () => {
-     expect(NumberOfEventsComponent.queryByRole("textbox")).toBeInTheDocument();
+    const numberTextBox =  NumberOfEventsComponent.queryByRole("textbox")
+    expect(numberTextBox).toBeInTheDocument();
+    expect(numberTextBox).toHaveClass("number-of-events-input");
   
 });
 
 //a test to enture that the default value of the input field is 32
 
 test('by default, value of the input field is 32', () => {
-    expect(NumberOfEventsComponent.queryByRole("textbox")).toHaveValue("32")
+    const numberTextBox = NumberOfEventsComponent.queryByRole("textbox");
+    expect(numberTextBox).toHaveValue("32")
 });
 
 //a test to ensure that the value of NumberOfEvents component's textbox has a value
@@ -29,9 +32,11 @@ test('by default, value of the input field is 32', () => {
 
 test('textbox value changes accordingly when user types in it', async () => {
     const user = userEvent.setup();
-    const userInput = NumberOfEventsComponent.queryByRole("textbox")
-    await user.type(userInput,`{backspace}{backspace}10`);
-    expect(userInput).toHaveValue('10');
+    const numberTextBox = NumberOfEventsComponent.queryByRole("textbox")
+    await user.type(numberTextBox,"123");
+    
+    
+    expect(numberTextBox).toHaveValue('32123');
 })
 
 });
