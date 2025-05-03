@@ -24,26 +24,3 @@ const Event = ({ event }) => {
 
 export default Event;
 
-// return (
-//     <li key={event.id} className="event">
-//         <h3 id="summary">{event.summary}</h3>
-//         <p id="created">{event.created}</p>
-//         <p id="location">{event.location}</p>
-
-//         {showDetails && (
-//             <div className="details">
-//                 <p>{event.description}</p>
-//                 <p>Start: {event.start.dateTime}</p>
-//                 <p>End: {event.end.dateTime}</p>
-
-//             </div>
-//         )}
-//         <button
-//             className="show-details"
-//             onClick={() => setShowDetails((prev) => !prev)}
-//         >
-//             {showDetails ? "hide-details" : "show-details"}
-//         </button>
-//     </li>
-// );
-// };

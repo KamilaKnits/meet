@@ -18,11 +18,6 @@ describe('<Event /> component', () => {
         expect(EventComponent.getByText(allEvents[0].summary)).toBeInTheDocument();
     });
 
-    // test('renders event start time', () => {
-    //     const startTimeElement = EventComponent.container.querySelector('#created');
-    //     expect(startTimeElement.textContent).toContain(allEvents[0].created);
-    // });
-
     test('renders event location', () => {
         expect(EventComponent.getByText(allEvents[0].location)).toBeInTheDocument();
     });

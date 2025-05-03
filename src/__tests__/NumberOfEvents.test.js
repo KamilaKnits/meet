@@ -1,13 +1,17 @@
 //src/__test__/NumberOfEvents.test.js
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, within, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import NumberOfEvents from "../components/NumberOfEvents";
+import App from './../App';
 
 describe('<NumberOfEvents /> component', () => {
     let NumberOfEventsComponent;
+    
     beforeEach(() => {
-        NumberOfEventsComponent = render(<NumberOfEvents />);
+        NumberOfEventsComponent = render(<NumberOfEvents
+        setCurrentNOE={() => {}}
+         />);
     })
 
 //test to ensure that the NumberOfEvets component contains an element with the role 
@@ -39,4 +43,25 @@ test('textbox value changes accordingly when user types in it', async () => {
     expect(numberTextBox).toHaveValue('32123');
 })
 
+});
+
+describe('<NumberOfEvents /> integration', () => {
+    test('user changes the number of events to see in input field', async () =>{
+        const user = userEvent.setup();
+        const AppComponent = render(<App />);
+        const AppDOM = AppComponent.container.firstChild;
+
+        const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
+        const numberOfEventsInput = within(NumberOfEventsDOM).queryByRole("textbox");
+        await user.click(numberOfEventsInput);
+        await user.clear(numberOfEventsInput);
+        await user.type(numberOfEventsInput, "12");
+        expect(numberOfEventsInput.value).toBe("12");
+
+        const EventListDOM = AppDOM.querySelector('#event-list');
+        await waitFor(() => {
+            const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+            expect(EventListItems.length).toBe(12)
+        });
+    });
 });

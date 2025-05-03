@@ -20,7 +20,7 @@ describe('<App /> component', () => {
     expect(AppDOM.querySelector('#city-search')).toBeInTheDocument();
   });
 
-  test('renders NumberOfEvents', () => {
+  test('render NumberOfEvents', () => {
     expect(AppDOM.querySelector('#number-of-events')).toBeInTheDocument();
   });
 });
@@ -45,9 +45,10 @@ describe('<App /> integration', () => {
     const berlinEvents = allEvents.filter(e => e.location === 'Berlin, Germany');
 
     expect(allRenderedEventItems.length).toBe(berlinEvents.length);
-    
+
     allRenderedEventItems.forEach(e => {
       expect(e.textContent).toContain("Berlin, Germany");
     });
   });
 });
+
