@@ -2,6 +2,7 @@
 import mockData from './mock-data';
 
 
+
 /**
  *
  * @param {*} events:
@@ -21,7 +22,9 @@ export const extractLocations = (events) => {
 
 export const getEvents = async () => {
 
+
   if (window.location.href.startsWith('http://localhost')) {
+ 
     return mockData;
   }
 
