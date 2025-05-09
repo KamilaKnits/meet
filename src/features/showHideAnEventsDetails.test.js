@@ -15,19 +15,21 @@ defineFeature(feature, test => {
             AppComponent = render(<App />);
         });
 
-        let EventListItems;
-        when('the events are displayed;',  async () => {
+
+        when('the events are displayed;', async () => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
-                EventListItems = within(EventListDOM).queryAllByRole('listitem');
-                expect(EventListItems).toBeInTheDocument();
-            
+            await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
+                expect(EventListItems.length).toBe(32);
+            });
+
         });
 
         then('each event\'s details should be hidden by default.', () => {
             const AppDOM = AppComponent.container.firstChild;
             const eventDetails = AppDOM.querySelector('.details');
-            expect(eventDetails).not.toBeInTheDocument();             
+            expect(eventDetails).not.toBeInTheDocument();
         });
     });
 
@@ -35,39 +37,43 @@ defineFeature(feature, test => {
         let AppComponent;
         given('the user is on the events page;', async () => {
             AppComponent = render(<App />);
-            
+
         });
-          
+
         and('the event details are hidden;', async () => {
             const AppDOM = AppComponent.container.firstChild;
-            const eventDetails = AppDOM.querySelector('#event-list');
+            const eventDetails = AppDOM.querySelector('.details');
             expect(eventDetails).not.toBeInTheDocument();
         });
 
-        let EventComponent;
-        when('the user clicks on an event;', async() => {
+        let EventListItem;
+        when('the user clicks on an event;', async () => {
             const user = userEvent.setup();
-            await user.click(EventComponent.queryByText("show-details"));
-            
+            await user.click(EventListItem);
         });
-      
-        then('the event details should be displayed.', async () => {
+        
+         then('the event details should be displayed.', () => {
             const AppDOM = AppComponent.container.firstChild;
             const eventDetails = AppDOM.querySelector('.details');
-            expect(eventDetails).toBeInTheDocument(); 
-       
+            expect(eventDetails).toBeInTheDocument();
+        });
     });
-});
 
     test('User can collapse an event to hide details.', ({ given, when, then }) => {
-        let AppDOM;
-        let EventListItem;
         
+        let EventListItems;
         given('the user has clicked show details button;', async () => {
             const user = userEvent.setup();
-            await user.click('.details')
+            const AppDOM = AppComponent.container.firstChild;
+            const EventListDOM = AppDOM.querySelector('#event-list');
+        let detailsBtn;
+        await waitFor(() => {
+        EventListItems = within(EventListDOM).queryAllByRole('listitem');
+        detailsBtn = within(EventListItems[0]).queryByText('show details');
         });
-
+        await user.click(detailsBtn);
+        });
+        let EventListItem;
         when('the user clicks on the same event again;', async () => {
             const user = userEvent.setup();
             await user.click(EventListItem);
@@ -77,9 +83,9 @@ defineFeature(feature, test => {
         then('the event details should be hidden.', () => {
             const AppDOM = AppComponent.container.firstChild;
             const eventDetails = AppDOM.querySelector('.details');
-            expect(eventDetails).not.toBeInTheDocument(); 
+            expect(eventDetails).not.toBeInTheDocument();
         });
     });
-
+   
 
 });

@@ -40,8 +40,10 @@ defineFeature(feature, test => {
             const AppDOM = AppComponent.container.firstChild;
             const NumberOfEventsDOM = AppDOM.querySelector('#number-of-events');
             const numberOfEventsInput = within(NumberOfEventsDOM).queryByRole("textbox");
-        
+            
+            await user.clear(numberOfEventsInput);
             await user.type(numberOfEventsInput, "12");
+            
         
         });
 
