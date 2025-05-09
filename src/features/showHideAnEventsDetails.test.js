@@ -52,7 +52,12 @@ defineFeature(feature, test => {
             await user.click(EventListItem);
         });
         
-         then('the event details should be displayed.', () => {
+         then('the event details should be displayed.', async () => {
+        //     await waitFor(() => {
+        //         const eventDetails  = AppComponent.container.querySelector('.details');
+        //         expect(eventDetails).toBeInTheDocument();
+        //     });
+        // });
             const AppDOM = AppComponent.container.firstChild;
             const eventDetails = AppDOM.querySelector('.details');
             expect(eventDetails).toBeInTheDocument();
