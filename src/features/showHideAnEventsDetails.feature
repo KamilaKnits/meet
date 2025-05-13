@@ -6,7 +6,6 @@ Feature: Show/Hide event details
 
  Scenario: User can expand an event to see details.
   Given the user is on the events page;
-  And the event details are hidden;
   When the user clicks on an event;
   Then the event details should be displayed.
 
