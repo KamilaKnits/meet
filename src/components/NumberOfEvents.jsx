@@ -7,8 +7,10 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
 
     const handleInputChanged = (e) =>{
         const value = e.target.value;
-        setNumber(value);
-        setCurrentNOE(value);
+        if (!isNaN(value) && value >= 0) {
+            setNumber(value);
+            setCurrentNOE(value);
+        }     
     }
     
     return (

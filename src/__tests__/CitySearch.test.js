@@ -12,6 +12,7 @@ describe('<CitySearch /> component', () => {
         CitySearchComponent = render(<CitySearch 
             allLocations={[]}
             setCurrentCity={() => { }}
+            setInfoAlert={() => { }}
             />);
     });
 
@@ -42,7 +43,9 @@ describe('<CitySearch /> component', () => {
         const allEvents = await getEvents();
         const allLocations = extractLocations(allEvents);
         CitySearchComponent.rerender(<CitySearch 
-            allLocations={allLocations}  />);
+            allLocations={allLocations} 
+            setInfoAlert={() => { }}
+             />);
 
 
         // user types "Berlin" in city textbox
@@ -69,6 +72,7 @@ describe('<CitySearch /> component', () => {
         CitySearchComponent.rerender(<CitySearch 
             allLocations={allLocations}
             setCurrentCity={() => { }} 
+            setInfoAlert={() => { }}
             />
         );
 
