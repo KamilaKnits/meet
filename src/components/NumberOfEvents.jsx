@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 
-const NumberOfEvents = ({ setCurrentNOE }) => {
+const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     
     const [number,setNumber] = useState(32);
 
@@ -10,8 +10,18 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
         if (!isNaN(value) && value >= 0) {
             setNumber(value);
             setCurrentNOE(value);
-        }     
-    }
+            setErrorAlert("");
+        }    
+        
+        let errorText;
+        if (number === "" || isNaN(number) || number <= 0 ) {
+            errorText = "Please enter a number greater than zero."
+         } else {
+            errorText = ""
+          }
+          setErrorAlert(errorText);
+  };
+    
     
     return (
         <div id="number-of-events">
