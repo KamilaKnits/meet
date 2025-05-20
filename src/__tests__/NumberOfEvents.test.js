@@ -11,6 +11,7 @@ describe('<NumberOfEvents /> component', () => {
     beforeEach(() => {
         NumberOfEventsComponent = render(<NumberOfEvents
         setCurrentNOE={() => {}}
+        setErrorAlert={() => {}}
          />);
     })
 
@@ -55,13 +56,13 @@ describe('<NumberOfEvents /> integration', () => {
         const numberOfEventsInput = within(NumberOfEventsDOM).queryByRole("textbox");
         await user.click(numberOfEventsInput);
         await user.clear(numberOfEventsInput);
-        await user.type(numberOfEventsInput, "12");
-        expect(numberOfEventsInput.value).toBe("12");
+        await user.type(numberOfEventsInput, "{backspace}{backspace}12");
+        expect(numberOfEventsInput).toHaveValue("12");
 
         const EventListDOM = AppDOM.querySelector('#event-list');
         await waitFor(() => {
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-            expect(EventListItems.length).toBe(12)
+            expect(EventListItems.length).toHaveValue("12")
         });
     });
 });
