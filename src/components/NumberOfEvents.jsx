@@ -7,19 +7,17 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 
     const handleInputChanged = (e) =>{
         const value = e.target.value;
-        if (!isNaN(value) && value >= 0) {
-            setNumber(value);
-            setCurrentNOE(value);
-            setErrorAlert("");
-        }    
+        
+        setNumber(value);
         
         let errorText;
-        if (number === "" || isNaN(number) || number <= 0 ) {
-            errorText = "Please enter a number greater than zero."
-         } else {
-            errorText = ""
-          }
-          setErrorAlert(errorText);
+        if(isNaN(value) || value <=0) {
+            errorText="Enter a valid numver";
+        } else {
+            errorText= "";
+            setCurrentNOE(value);
+        }
+        setErrorAlert(errorText);
   };
     
     
@@ -39,3 +37,17 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
 }
 
 export default NumberOfEvents;
+
+// if (!isNaN(value) && value >= 0) {
+//     setNumber(value);
+//     setCurrentNOE(value);
+//     setErrorAlert("");
+// }    
+
+// let errorText;
+// if (number === "" || isNaN(number) || number <= 0 ) {
+//     errorText = "Please enter a number greater than zero."
+//  } else {
+//     errorText = ""
+//   }
+//   setErrorAlert(errorText);
