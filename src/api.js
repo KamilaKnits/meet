@@ -1,5 +1,7 @@
 //src/api.js
 import mockData from './mock-data';
+import NProgress from 'nprogress';
+
 
 
 
@@ -22,17 +24,17 @@ export const extractLocations = (events) => {
 //   This function will fetch the list of all events
 
 export const getEvents = async () => {
+  if (window.location.href.startsWith('http://localhost')) {
+    return mockData;
+  }
+
   if (!navigator.onLine) {
     const events = localStorage.getItem("lastEvents");
     NProgress.done();
     return events?JSON.parse(events):[];
   }
 
-  if (window.location.href.startsWith('http://localhost')) {
- 
-    return mockData;
-  }
-
+  
   const token = await getAccessToken();
 
   if (token) {
